@@ -39,6 +39,31 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True  # Use this instead of orm_mode in Pydantic v2
 
+class UsersResponse(UserBase):
+    id: int
+    username: Optional[str] = None
+    email: Optional[str] = None    
+    status: Optional[bool] = None
+    idDepartment: Optional[int] = None
+    idElecSignature: Optional[int] = None
+    code: Optional[str] = None
+
+    # Additional boolean fields for user attributes
+    accept: bool
+    share: bool
+    created: bool
+    checked: bool
+    closed: bool
+    contract: bool
+    admin: bool
+    editor: bool
+    completed: bool
+    techSpecification: bool
+
+    # Updated configuration for Pydantic v2
+    class Config:
+        from_attributes = True  # Use this instead of orm_mode in Pydantic v2
+
 class UserUpdate(BaseModel):
     username: Optional[str]
     email: Optional[str]    
